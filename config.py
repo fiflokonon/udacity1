@@ -1,4 +1,6 @@
+from multiprocessing import connection
 import os
+import psycopg2
 SECRET_KEY = os.urandom(32)
 # Grabs the folder where the script runs.
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -7,7 +9,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 
 # Connect to the database
-
+connection = psycopg2.connect(host='localhost', user='testuser', password='udacity', dbname='fyyur', port=5432)
 
 # TODO IMPLEMENT DATABASE URL
 SQLALCHEMY_DATABASE_URI = 'postgresql://testuser:udacity@localhost:5432/fyyur'
